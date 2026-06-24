@@ -6,27 +6,23 @@
       "use": "vercel-php@0.7.1"
     },
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "public"
-      }
+      "src": "public/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "/(bootstrap-5.3.8-dist|images|img|css|js)/(.*)",
+      "dest": "/public/$1/$2"
     },
     {
       "src": "/(.*)",
       "dest": "/api/index.php"
     }
   ],
-  "outputDirectory": "public",
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "false",
-    "APP_URL": "https://myfortopolio.vercel.app",
     "CACHE_DRIVER": "array",
     "SESSION_DRIVER": "cookie",
     "QUEUE_DRIVER": "sync",
