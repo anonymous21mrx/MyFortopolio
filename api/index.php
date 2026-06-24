@@ -2,10 +2,6 @@
 
 use Illuminate\Http\Request;
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-$_ENV['APP_DEBUG'] = 'true';
-
 define('LARAVEL_START', microtime(true));
 
 // Determine if the application is in maintenance mode...
@@ -38,9 +34,4 @@ foreach ($dirs as $dir) {
 
 $app->useStoragePath($storagePath);
 
-try {
-    $app->handleRequest(Request::capture());
-} catch (\Throwable $e) {
-    echo "<h1>Fatal Vercel Error</h1>";
-    echo "<pre>" . (string) $e . "</pre>";
-}
+$app->handleRequest(Request::capture());
