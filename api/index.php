@@ -26,7 +26,8 @@ $dirs = [
     'framework/cache/data',
     'framework/sessions',
     'logs',
-    'app/public'
+    'app/public',
+    'bootstrap/cache'
 ];
 
 foreach ($dirs as $dir) {
