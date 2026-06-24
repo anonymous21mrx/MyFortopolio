@@ -37,4 +37,9 @@ foreach ($dirs as $dir) {
 
 $app->useStoragePath($storagePath);
 
-$app->handleRequest(Request::capture());
+try {
+    $app->handleRequest(Request::capture());
+} catch (\Throwable $e) {
+    echo "<h1>Fatal Vercel Error</h1>";
+    echo "<pre>" . (string) $e . "</pre>";
+}
